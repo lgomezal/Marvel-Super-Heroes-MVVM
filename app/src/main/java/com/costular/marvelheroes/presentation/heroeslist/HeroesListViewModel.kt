@@ -27,7 +27,7 @@ class HeroesListViewModel @Inject constructor(
                             heroesListState.value = it
                         },
                         onError = {
-
+                            val error = error(it)
                         }
                 )
                 .addTo(compositeDisposable)
