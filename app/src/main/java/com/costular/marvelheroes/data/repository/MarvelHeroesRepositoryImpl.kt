@@ -7,9 +7,6 @@ import com.costular.marvelheroes.data.repository.datasource.RemoteMarvelHeroesDa
 import com.costular.marvelheroes.domain.model.MarvelHeroEntity
 import io.reactivex.Observable
 
-/**
- * Created by costular on 17/03/2018.
- */
 class MarvelHeroesRepositoryImpl(private val localDataSource: LocalDataSource,
         private val remoteMarvelHeroesDataSource: RemoteMarvelHeroesDataSource,
                                  private val marvelHeroesMapper: MarvelHeroMapper)

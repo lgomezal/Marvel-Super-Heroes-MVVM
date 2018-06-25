@@ -16,9 +16,6 @@ import com.costular.marvelheroes.presentation.heroedetail.MarvelHeroeDetailActiv
 import org.junit.Test
 import org.junit.runner.RunWith
 
-/**
- * Created by costular on 18/03/2018.
- */
 @RunWith(AndroidJUnit4::class)
 class HeroesListActivityTest {
 

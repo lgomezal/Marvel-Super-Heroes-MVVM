@@ -3,6 +3,7 @@ package com.costular.marvelheroes.repository
 import com.costular.marvelheroes.data.model.MarvelHero
 import com.costular.marvelheroes.data.model.mapper.MarvelHeroMapper
 import com.costular.marvelheroes.data.repository.MarvelHeroesRepositoryImpl
+import com.costular.marvelheroes.data.repository.datasource.LocalDataSource
 import com.costular.marvelheroes.data.repository.datasource.RemoteMarvelHeroesDataSource
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.verify
@@ -11,11 +12,9 @@ import io.reactivex.Observable
 import org.junit.Before
 import org.junit.Test
 
-/**
- * Created by costular on 17/03/2018.
- */
 class MarvelHeroesRepositoryTest {
 
+    private val mockLocalDataSource: LocalDataSource = mock()
     private val mockRemoteDataSource: RemoteMarvelHeroesDataSource = mock()
 
     private lateinit var mapper: MarvelHeroMapper
@@ -24,7 +23,7 @@ class MarvelHeroesRepositoryTest {
     @Before
     fun setUp() {
         mapper = MarvelHeroMapper()
-        marvelHeroesRepository = MarvelHeroesRepositoryImpl(mockRemoteDataSource, mapper)
+        marvelHeroesRepository = MarvelHeroesRepositoryImpl(mockLocalDataSource, mockRemoteDataSource, mapper)
     }
 
     @Test

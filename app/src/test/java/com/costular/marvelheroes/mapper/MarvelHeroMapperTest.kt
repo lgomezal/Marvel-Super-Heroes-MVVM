@@ -8,9 +8,6 @@ import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
 
-/**
- * Created by costular on 18/03/2018.
- */
 class MarvelHeroMapperTest {
 
     private lateinit var marvelHeroMapper: MarvelHeroMapper

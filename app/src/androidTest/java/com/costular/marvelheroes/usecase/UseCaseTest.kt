@@ -7,9 +7,6 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import java.util.concurrent.CountDownLatch
 
-/**
- * Created by costular on 17/03/2018.
- */
 @RunWith(AndroidJUnit4::class)
 class UseCaseTest {
 

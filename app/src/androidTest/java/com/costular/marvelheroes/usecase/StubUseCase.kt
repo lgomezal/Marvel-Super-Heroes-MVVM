@@ -3,9 +3,6 @@ package com.costular.marvelheroes.usecase
 import com.costular.marvelheroes.domain.usecase.UseCase
 import io.reactivex.Observable
 
-/**
- * Created by costular on 18/03/2018.
- */
 class StubUseCase : UseCase<IntArray>() {
 
     companion object {

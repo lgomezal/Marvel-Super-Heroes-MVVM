@@ -26,6 +26,7 @@
         android:layout_marginRight="16dp"
         style="@style/HeroDetailName" />
 
+
     <TextView
         android:id="@+id/heroDetailRealName"
         android:layout_width="wrap_content"

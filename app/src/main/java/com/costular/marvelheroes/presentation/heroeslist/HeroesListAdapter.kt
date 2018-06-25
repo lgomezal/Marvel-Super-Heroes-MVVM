@@ -1,12 +1,10 @@
 package com.costular.marvelheroes.presentation.heroeslist
 
-import android.app.VoiceInteractor
 import android.content.Context
 import android.graphics.Bitmap
-import android.graphics.drawable.Drawable
+import android.support.v4.content.ContextCompat
 import android.support.v7.graphics.Palette
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,9 +18,7 @@ import com.costular.marvelheroes.R
 import com.costular.marvelheroes.domain.model.MarvelHeroEntity
 import kotlinx.android.synthetic.main.item_hero.view.*
 
-        /**
- * Created by costular on 17/03/2018.
- */
+
 typealias Click = (MarvelHeroEntity, ImageView) -> Unit
 
 class HeroesListAdapter(val clickListener: Click):  RecyclerView.Adapter<HeroesListAdapter.HeroesViewHolder>() {
@@ -74,6 +70,15 @@ class HeroesListAdapter(val clickListener: Click):  RecyclerView.Adapter<HeroesL
 
                 heroTitle.text = item.name
                 setOnClickListener { clickListener(item, heroImage) }
+
+                favouriteStar.setOnClickListener {
+
+                    if (favouriteStar.background.constantState == ContextCompat.getDrawable(context, R.drawable.star_grey)?.constantState) {
+                        favouriteStar.setBackgroundResource(R.drawable.star_yellow)
+                    } else {
+                        favouriteStar.setBackgroundResource(R.drawable.star_grey)
+                    }
+                }
             }
         }
 

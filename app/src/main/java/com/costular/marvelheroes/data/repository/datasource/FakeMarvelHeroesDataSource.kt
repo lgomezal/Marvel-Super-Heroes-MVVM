@@ -3,9 +3,6 @@ package com.costular.marvelheroes.data.repository.datasource
 import com.costular.marvelheroes.data.model.MarvelHero
 import io.reactivex.Observable
 
-/**
- * Created by costular on 05/06/2018.
- */
 class FakeMarvelHeroesDataSource : MarvelHeroesDataSource {
 
     override fun getMarvelHeroesList(): Observable<List<MarvelHero>> {
