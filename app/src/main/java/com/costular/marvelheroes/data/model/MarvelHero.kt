@@ -10,5 +10,8 @@ data class MarvelHero(
         val height: String = "",
         val power: String = "",
         val abilities: String = "",
-        val groups: String = ""
+        val groups: String = "",
+        val isFavourite: Boolean = false,
+        val review: Int = 0,
+        val reviewText: String = ""
 )

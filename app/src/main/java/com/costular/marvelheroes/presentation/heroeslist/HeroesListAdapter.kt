@@ -20,8 +20,9 @@ import kotlinx.android.synthetic.main.item_hero.view.*
 
 
 typealias Click = (MarvelHeroEntity, ImageView) -> Unit
+typealias ClickButton = (MarvelHeroEntity) -> Unit
 
-class HeroesListAdapter(val clickListener: Click):  RecyclerView.Adapter<HeroesListAdapter.HeroesViewHolder>() {
+class HeroesListAdapter(val clickListener: Click, val clickListenerButton: ClickButton):  RecyclerView.Adapter<HeroesListAdapter.HeroesViewHolder>() {
 
     private lateinit var context: Context
 
@@ -33,6 +34,7 @@ class HeroesListAdapter(val clickListener: Click):  RecyclerView.Adapter<HeroesL
                 LayoutInflater.from(parent.context)
                         .inflate(R.layout.item_hero, parent, false)
         )
+
     }
 
     override fun getItemCount() = data.size
@@ -61,6 +63,7 @@ class HeroesListAdapter(val clickListener: Click):  RecyclerView.Adapter<HeroesL
                                 resource?.let { loadColorsFromBitmap(it) }
                                 return false
                             }
+
                             override fun onLoadFailed(e: GlideException?, model: Any?, target: Target<Bitmap>?, isFirstResource: Boolean): Boolean {
                                 return false
                             }
@@ -69,15 +72,26 @@ class HeroesListAdapter(val clickListener: Click):  RecyclerView.Adapter<HeroesL
                         .into(heroImage)
 
                 heroTitle.text = item.name
-                setOnClickListener { clickListener(item, heroImage) }
+
+                // Change backgroung star button if isFavourite is activate
+                if (item.isFavourite) {
+                    favouriteStar.setBackgroundResource(R.drawable.star_yellow)
+                }
+
+                heroImage.setOnClickListener {
+                    clickListener(item, heroImage)
+                }
 
                 favouriteStar.setOnClickListener {
 
                     if (favouriteStar.background.constantState == ContextCompat.getDrawable(context, R.drawable.star_grey)?.constantState) {
                         favouriteStar.setBackgroundResource(R.drawable.star_yellow)
+                        item.isFavourite = true
                     } else {
                         favouriteStar.setBackgroundResource(R.drawable.star_grey)
+                        item.isFavourite = false
                     }
+                    clickListenerButton(item)
                 }
             }
         }

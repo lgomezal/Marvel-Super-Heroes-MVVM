@@ -7,18 +7,25 @@ import android.support.v7.widget.DefaultItemAnimator
 import android.support.v7.widget.GridLayoutManager
 import android.view.View
 import com.costular.marvelheroes.R
+import com.costular.marvelheroes.data.db.HeroesDatabase
+import com.costular.marvelheroes.data.repository.datasource.LocalDataSource
+import com.costular.marvelheroes.di.components.DaggerApplicationComponent
 import com.costular.marvelheroes.di.components.DaggerGetMarvelHeroesListComponent
 import com.costular.marvelheroes.di.modules.GetMarvelHeroesListModule
 import com.costular.marvelheroes.domain.model.MarvelHeroEntity
 import com.costular.marvelheroes.presentation.MainApp
 import com.costular.marvelheroes.presentation.util.Navigator
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.item_hero.*
 import javax.inject.Inject
 
 class HeroesListActivity : AppCompatActivity() {
 
     @Inject
     lateinit var navigator: Navigator
+
+    @Inject
+    lateinit var localDataSource: LocalDataSource
 
     @Inject
     lateinit var heroesListViewModel: HeroesListViewModel
@@ -48,7 +55,8 @@ class HeroesListActivity : AppCompatActivity() {
     }
 
     private fun setUpRecycler() {
-        adapter = HeroesListAdapter { hero, image -> goToHeroDetail(hero, image) }
+        adapter = HeroesListAdapter ({ hero, image -> goToHeroDetail(hero, image) },
+                                     { hero -> updateHero(hero) })
         heroesListRecycler.layoutManager = GridLayoutManager(this, 2, GridLayoutManager.VERTICAL, false)
         heroesListRecycler.itemAnimator = DefaultItemAnimator()
         heroesListRecycler.adapter = adapter
@@ -56,6 +64,11 @@ class HeroesListActivity : AppCompatActivity() {
 
     private fun goToHeroDetail(hero: MarvelHeroEntity, image: View) {
         navigator.goToHeroDetail(this, hero, image)
+
+    }
+
+    private fun updateHero(hero: MarvelHeroEntity) {
+        localDataSource.updateHeroe(hero)
     }
 
     private fun bindEvents() {

@@ -3,5 +3,6 @@
 
     <!-- Animations -->
     <string name="image_transition">imageTransition</string>
+    <string name="heroe_review_observations">Heroe review observations</string>
 
 </resources>

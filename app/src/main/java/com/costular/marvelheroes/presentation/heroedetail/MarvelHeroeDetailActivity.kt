@@ -1,8 +1,11 @@
 package com.costular.marvelheroes.presentation.heroedetail
 
+import android.content.Context
 import android.graphics.drawable.Drawable
 import android.os.Bundle
+import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
+import android.text.SpannableStringBuilder
 import android.view.MenuItem
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
@@ -12,6 +15,7 @@ import com.bumptech.glide.request.target.Target
 import com.costular.marvelheroes.R
 import com.costular.marvelheroes.domain.model.MarvelHeroEntity
 import kotlinx.android.synthetic.main.activity_hero_detail.*
+import kotlinx.android.synthetic.main.item_hero.view.*
 
 class MarvelHeroeDetailActivity : AppCompatActivity() {
 
@@ -54,6 +58,61 @@ class MarvelHeroeDetailActivity : AppCompatActivity() {
         heroDetailHeight.text = hero.height
         heroDetailPower.text = hero.power
         heroDetailAbilities.text = hero.abilities
+        heroeObservations.text = SpannableStringBuilder(hero.reviewText)
+
+        review1.setOnClickListener {
+            if (review1.background.constantState == ContextCompat.getDrawable(this, R.drawable.star_yellow)?.constantState) {
+                review1.setBackgroundResource(R.drawable.star_grey)
+            } else {
+                review1.setBackgroundResource(R.drawable.star_yellow)
+            }
+            review2.setBackgroundResource(R.drawable.star_grey)
+            review3.setBackgroundResource(R.drawable.star_grey)
+            review4.setBackgroundResource(R.drawable.star_grey)
+            review5.setBackgroundResource(R.drawable.star_grey)
+            hero.review = 1
+            hero.reviewText = heroeObservations.text.toString()
+        }
+
+        review2.setOnClickListener {
+            review1.setBackgroundResource(R.drawable.star_yellow)
+            review2.setBackgroundResource(R.drawable.star_yellow)
+            review3.setBackgroundResource(R.drawable.star_grey)
+            review4.setBackgroundResource(R.drawable.star_grey)
+            review5.setBackgroundResource(R.drawable.star_grey)
+            hero.review = 2
+            hero.reviewText = heroeObservations.text.toString()
+        }
+
+        review3.setOnClickListener {
+            review1.setBackgroundResource(R.drawable.star_yellow)
+            review2.setBackgroundResource(R.drawable.star_yellow)
+            review3.setBackgroundResource(R.drawable.star_yellow)
+            review4.setBackgroundResource(R.drawable.star_grey)
+            review5.setBackgroundResource(R.drawable.star_grey)
+            hero.review = 3
+            hero.reviewText = heroeObservations.text.toString()
+        }
+
+        review4.setOnClickListener {
+            review1.setBackgroundResource(R.drawable.star_yellow)
+            review2.setBackgroundResource(R.drawable.star_yellow)
+            review3.setBackgroundResource(R.drawable.star_yellow)
+            review4.setBackgroundResource(R.drawable.star_yellow)
+            review5.setBackgroundResource(R.drawable.star_grey)
+            hero.review = 4
+            hero.reviewText = heroeObservations.text.toString()
+        }
+
+        review5.setOnClickListener {
+            review1.setBackgroundResource(R.drawable.star_yellow)
+            review2.setBackgroundResource(R.drawable.star_yellow)
+            review3.setBackgroundResource(R.drawable.star_yellow)
+            review4.setBackgroundResource(R.drawable.star_yellow)
+            review5.setBackgroundResource(R.drawable.star_yellow)
+            hero.review = 5
+            hero.reviewText = heroeObservations.text.toString()
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {

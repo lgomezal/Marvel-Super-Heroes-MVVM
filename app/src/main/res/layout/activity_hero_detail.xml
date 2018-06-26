@@ -8,6 +8,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:focusableInTouchMode="true"
+    android:descendantFocusability="beforeDescendants"
     xmlns:tools="http://schemas.android.com/tools"
     android:paddingBottom="16dp">
 
@@ -25,7 +27,6 @@
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         style="@style/HeroDetailName" />
-
 
     <TextView
         android:id="@+id/heroDetailRealName"
@@ -54,6 +55,48 @@
         android:layout_height="wrap_content"
         style="@style/HeroDetailAbilities"
         tools:text="Tony has a genius level intellect that allows him to invent a wide range of sophisticated devices, specializing in advanced weapons and armor. He possesses a keen business mind." />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/review1"
+            style="@style/StartReview"
+            android:background="@drawable/star_grey" />
+
+        <Button
+            android:id="@+id/review2"
+            style="@style/StartReview"
+            android:background="@drawable/star_grey" />
+
+        <Button
+            android:id="@+id/review3"
+            style="@style/StartReview"
+            android:background="@drawable/star_grey" />
+
+        <Button
+            android:id="@+id/review4"
+            style="@style/StartReview"
+            android:background="@drawable/star_grey" />
+
+        <Button
+            android:id="@+id/review5"
+            style="@style/StartReview"
+            android:background="@drawable/star_grey" />
+
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/heroeObservations"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/ReviewObservations"
+        android:hint="@string/heroe_review_observations"
+        android:inputType="textMultiLine"
+        tools:ignore="RtlCompat" />
+
 
 </LinearLayout>
 
