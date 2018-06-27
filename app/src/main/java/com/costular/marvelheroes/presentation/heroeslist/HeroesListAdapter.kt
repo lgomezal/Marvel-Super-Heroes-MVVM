@@ -76,7 +76,7 @@ class HeroesListAdapter(val clickListener: Click, val clickListenerButton: Click
 
                 heroTitle.text = item.name
 
-                // Change backgroung star button if isFavourite is activate
+                // Change backgroung star button if isFavourite is activate.
                 if (item.isFavourite) {
                     favouriteStar.setBackgroundResource(R.drawable.star_yellow)
                 }
