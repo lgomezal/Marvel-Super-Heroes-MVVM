@@ -39,7 +39,9 @@ class HeroesListAdapter(val clickListener: Click, val clickListenerButton: Click
 
     override fun getItemCount() = data.size
 
-    override fun onBindViewHolder(holder: HeroesViewHolder, position: Int) = holder.bind(data[position])
+    override fun onBindViewHolder(holder: HeroesViewHolder, position: Int) {
+        holder.bind(data[position])
+    }
 
     fun swapData(data: List<MarvelHeroEntity>) {
         this.data.clear()
@@ -54,6 +56,7 @@ class HeroesListAdapter(val clickListener: Click, val clickListenerButton: Click
 
     inner class HeroesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(item: MarvelHeroEntity) = with(itemView) {
+
             kotlin.with(itemView) {
                 Glide.with(context)
                         .asBitmap()

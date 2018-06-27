@@ -17,6 +17,7 @@ import com.costular.marvelheroes.presentation.MainApp
 import com.costular.marvelheroes.presentation.util.Navigator
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.item_hero.*
+import kotlinx.android.synthetic.main.item_hero.view.*
 import javax.inject.Inject
 
 class HeroesListActivity : AppCompatActivity() {

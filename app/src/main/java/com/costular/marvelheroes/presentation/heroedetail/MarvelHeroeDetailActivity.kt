@@ -14,8 +14,10 @@ import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 import com.costular.marvelheroes.R
 import com.costular.marvelheroes.domain.model.MarvelHeroEntity
+import com.costular.marvelheroes.presentation.heroeslist.HeroesListActivity
 import kotlinx.android.synthetic.main.activity_hero_detail.*
 import kotlinx.android.synthetic.main.item_hero.view.*
+import javax.annotation.meta.When
 
 class MarvelHeroeDetailActivity : AppCompatActivity() {
 
@@ -61,57 +63,33 @@ class MarvelHeroeDetailActivity : AppCompatActivity() {
         heroeObservations.text = SpannableStringBuilder(hero.reviewText)
 
         review1.setOnClickListener {
-            if (review1.background.constantState == ContextCompat.getDrawable(this, R.drawable.star_yellow)?.constantState) {
-                review1.setBackgroundResource(R.drawable.star_grey)
-            } else {
-                review1.setBackgroundResource(R.drawable.star_yellow)
-            }
-            review2.setBackgroundResource(R.drawable.star_grey)
-            review3.setBackgroundResource(R.drawable.star_grey)
-            review4.setBackgroundResource(R.drawable.star_grey)
-            review5.setBackgroundResource(R.drawable.star_grey)
             hero.review = 1
             hero.reviewText = heroeObservations.text.toString()
+            putStartsReview(hero.review)
         }
 
         review2.setOnClickListener {
-            review1.setBackgroundResource(R.drawable.star_yellow)
-            review2.setBackgroundResource(R.drawable.star_yellow)
-            review3.setBackgroundResource(R.drawable.star_grey)
-            review4.setBackgroundResource(R.drawable.star_grey)
-            review5.setBackgroundResource(R.drawable.star_grey)
             hero.review = 2
             hero.reviewText = heroeObservations.text.toString()
+            putStartsReview(hero.review)
         }
 
         review3.setOnClickListener {
-            review1.setBackgroundResource(R.drawable.star_yellow)
-            review2.setBackgroundResource(R.drawable.star_yellow)
-            review3.setBackgroundResource(R.drawable.star_yellow)
-            review4.setBackgroundResource(R.drawable.star_grey)
-            review5.setBackgroundResource(R.drawable.star_grey)
             hero.review = 3
             hero.reviewText = heroeObservations.text.toString()
+            putStartsReview(hero.review)
         }
 
         review4.setOnClickListener {
-            review1.setBackgroundResource(R.drawable.star_yellow)
-            review2.setBackgroundResource(R.drawable.star_yellow)
-            review3.setBackgroundResource(R.drawable.star_yellow)
-            review4.setBackgroundResource(R.drawable.star_yellow)
-            review5.setBackgroundResource(R.drawable.star_grey)
             hero.review = 4
             hero.reviewText = heroeObservations.text.toString()
+            putStartsReview(hero.review)
         }
 
         review5.setOnClickListener {
-            review1.setBackgroundResource(R.drawable.star_yellow)
-            review2.setBackgroundResource(R.drawable.star_yellow)
-            review3.setBackgroundResource(R.drawable.star_yellow)
-            review4.setBackgroundResource(R.drawable.star_yellow)
-            review5.setBackgroundResource(R.drawable.star_yellow)
             hero.review = 5
             hero.reviewText = heroeObservations.text.toString()
+            putStartsReview(hero.review)
         }
     }
 
@@ -122,6 +100,53 @@ class MarvelHeroeDetailActivity : AppCompatActivity() {
                 true
             }
             else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    fun putStartsReview(review: Int) {
+        if (review == 1) {
+            if ((review1.background.constantState == ContextCompat.getDrawable(this, R.drawable.star_yellow)?.constantState) &&
+                    (review2.background.constantState == ContextCompat.getDrawable(this, R.drawable.star_grey)?.constantState)) {
+                review1.setBackgroundResource(R.drawable.star_grey)
+            } else {
+                review1.setBackgroundResource(R.drawable.star_yellow)
+            }
+            review2.setBackgroundResource(R.drawable.star_grey)
+            review3.setBackgroundResource(R.drawable.star_grey)
+            review4.setBackgroundResource(R.drawable.star_grey)
+            review5.setBackgroundResource(R.drawable.star_grey)
+        }
+
+        if (review == 2) {
+            review1.setBackgroundResource(R.drawable.star_yellow)
+            review2.setBackgroundResource(R.drawable.star_yellow)
+            review3.setBackgroundResource(R.drawable.star_grey)
+            review4.setBackgroundResource(R.drawable.star_grey)
+            review5.setBackgroundResource(R.drawable.star_grey)
+        }
+
+        if (review == 3) {
+            review1.setBackgroundResource(R.drawable.star_yellow)
+            review2.setBackgroundResource(R.drawable.star_yellow)
+            review3.setBackgroundResource(R.drawable.star_yellow)
+            review4.setBackgroundResource(R.drawable.star_grey)
+            review5.setBackgroundResource(R.drawable.star_grey)
+        }
+
+        if (review == 4) {
+            review1.setBackgroundResource(R.drawable.star_yellow)
+            review2.setBackgroundResource(R.drawable.star_yellow)
+            review3.setBackgroundResource(R.drawable.star_yellow)
+            review4.setBackgroundResource(R.drawable.star_yellow)
+            review5.setBackgroundResource(R.drawable.star_grey)
+        }
+
+        if (review == 5) {
+            review1.setBackgroundResource(R.drawable.star_yellow)
+            review2.setBackgroundResource(R.drawable.star_yellow)
+            review3.setBackgroundResource(R.drawable.star_yellow)
+            review4.setBackgroundResource(R.drawable.star_yellow)
+            review5.setBackgroundResource(R.drawable.star_yellow)
         }
     }
 

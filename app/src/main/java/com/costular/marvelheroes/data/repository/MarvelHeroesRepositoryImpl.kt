@@ -15,7 +15,7 @@ class MarvelHeroesRepositoryImpl(private val localDataSource: LocalDataSource,
 
 
     override fun getMarvelHeroesList(): Observable<List<MarvelHeroEntity>> =
-            getHeroesFromDb().concatWith(getHeroesFromApi())
+            getHeroesFromApi().concatWith(getHeroesFromDb())
 
     private fun getHeroesFromDb(): Observable<List<MarvelHeroEntity>> =
             localDataSource.getLocalMarvelHeroesList()
