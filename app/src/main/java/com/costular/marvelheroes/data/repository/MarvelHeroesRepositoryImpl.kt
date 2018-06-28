@@ -26,4 +26,9 @@ class MarvelHeroesRepositoryImpl(private val localDataSource: LocalDataSource,
                     .getMarvelHeroesList()
                     .map { marvelHeroesMapper.transformList(it) }
                     .doOnNext { localDataSource.saveHeroes(it) }
+
+    fun updateHeroeFromView(hero: MarvelHeroEntity) {
+        localDataSource.updateHeroe(hero)
+    }
+
 }

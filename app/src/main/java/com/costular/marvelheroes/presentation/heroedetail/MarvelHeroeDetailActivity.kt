@@ -1,6 +1,5 @@
 package com.costular.marvelheroes.presentation.heroedetail
 
-import android.content.Context
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
@@ -16,14 +15,16 @@ import com.costular.marvelheroes.R
 import com.costular.marvelheroes.domain.model.MarvelHeroEntity
 import com.costular.marvelheroes.presentation.heroeslist.HeroesListActivity
 import kotlinx.android.synthetic.main.activity_hero_detail.*
-import kotlinx.android.synthetic.main.item_hero.view.*
-import javax.annotation.meta.When
+
+typealias ClickButton = (MarvelHeroEntity) -> Unit
 
 class MarvelHeroeDetailActivity : AppCompatActivity() {
 
     companion object {
         const val PARAM_HEROE = "heroe"
     }
+
+    val heroesListActivity: HeroesListActivity = HeroesListActivity()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,7 +37,6 @@ class MarvelHeroeDetailActivity : AppCompatActivity() {
 
         val hero: MarvelHeroEntity? = intent?.extras?.getParcelable(PARAM_HEROE)
         hero?.let { fillHeroData(it) }
-
     }
 
     private fun fillHeroData(hero: MarvelHeroEntity) {
@@ -66,6 +66,7 @@ class MarvelHeroeDetailActivity : AppCompatActivity() {
             hero.review = 1
             hero.reviewText = heroeObservations.text.toString()
             putStartsReview(hero.review)
+            //heroesListActivity.updateHero(hero)
         }
 
         review2.setOnClickListener {

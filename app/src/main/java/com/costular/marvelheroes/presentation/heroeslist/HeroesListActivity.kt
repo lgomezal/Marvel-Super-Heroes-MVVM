@@ -7,17 +7,14 @@ import android.support.v7.widget.DefaultItemAnimator
 import android.support.v7.widget.GridLayoutManager
 import android.view.View
 import com.costular.marvelheroes.R
-import com.costular.marvelheroes.data.db.HeroesDatabase
-import com.costular.marvelheroes.data.repository.datasource.LocalDataSource
-import com.costular.marvelheroes.di.components.DaggerApplicationComponent
+import com.costular.marvelheroes.data.repository.MarvelHeroesRepositoryImpl
+import com.costular.marvelheroes.di.components.ApplicationComponent
 import com.costular.marvelheroes.di.components.DaggerGetMarvelHeroesListComponent
 import com.costular.marvelheroes.di.modules.GetMarvelHeroesListModule
 import com.costular.marvelheroes.domain.model.MarvelHeroEntity
 import com.costular.marvelheroes.presentation.MainApp
 import com.costular.marvelheroes.presentation.util.Navigator
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.item_hero.*
-import kotlinx.android.synthetic.main.item_hero.view.*
 import javax.inject.Inject
 
 class HeroesListActivity : AppCompatActivity() {
@@ -26,12 +23,13 @@ class HeroesListActivity : AppCompatActivity() {
     lateinit var navigator: Navigator
 
     @Inject
-    lateinit var localDataSource: LocalDataSource
+    lateinit var marvelHeroesRepositoryImpl: MarvelHeroesRepositoryImpl
 
     @Inject
     lateinit var heroesListViewModel: HeroesListViewModel
 
     lateinit var adapter: HeroesListAdapter
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         inject()
@@ -68,8 +66,8 @@ class HeroesListActivity : AppCompatActivity() {
 
     }
 
-    private fun updateHero(hero: MarvelHeroEntity) {
-        localDataSource.updateHeroe(hero)
+    fun updateHero(hero: MarvelHeroEntity) {
+        marvelHeroesRepositoryImpl.updateHeroeFromView(hero)
     }
 
     private fun bindEvents() {
