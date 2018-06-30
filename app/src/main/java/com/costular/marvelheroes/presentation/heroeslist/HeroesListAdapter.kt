@@ -54,6 +54,12 @@ class HeroesListAdapter(val clickListener: Click, val clickListenerButton: Click
         notifyDataSetChanged()
     }
 
+    fun swapDataDetail(data: MarvelHeroEntity) {
+        val index = this.data.indexOf(data)
+        this.data.set(index, data)
+        notifyDataSetChanged()
+    }
+
     inner class HeroesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(item: MarvelHeroEntity) = with(itemView) {
 
@@ -75,6 +81,7 @@ class HeroesListAdapter(val clickListener: Click, val clickListenerButton: Click
                         .into(heroImage)
 
                 heroTitle.text = item.name
+
 
                 // Change backgroung star button if isFavourite is activate.
                 if (item.isFavourite) {

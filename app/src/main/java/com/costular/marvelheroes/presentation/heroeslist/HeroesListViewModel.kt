@@ -19,6 +19,7 @@ class HeroesListViewModel @Inject constructor(
 
     val heroesListState: MutableLiveData<List<MarvelHeroEntity>> = MutableLiveData()
     val isLoagingState: MutableLiveData<Boolean> = MutableLiveData()
+    val heroeDetailState: MutableLiveData<MarvelHeroEntity> = MutableLiveData()
 
     fun loadMarvelHeroes() {
         getMarvelHeroesList.marvelHeroesRepositoryImpl.getMarvelHeroesList()
@@ -38,7 +39,7 @@ class HeroesListViewModel @Inject constructor(
 
     }
 
-    fun up(hero: MarvelHeroEntity) {
+    fun updateHero(hero: MarvelHeroEntity) {
         marvelHeroesRepositoryImpl.updateHeroeFromView(hero)
     }
 

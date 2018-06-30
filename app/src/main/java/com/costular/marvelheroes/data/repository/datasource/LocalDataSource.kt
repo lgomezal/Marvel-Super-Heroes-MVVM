@@ -25,11 +25,12 @@ class LocalDataSource(private val heroesDatabase: HeroesDatabase) {
                     .subscribe()
         }
 
-        fun updateHeroe(heroe: MarvelHeroEntity) {
+        fun updateHeroe(hero: MarvelHeroEntity) {
             Observable.fromCallable {
-                heroesDatabase.getHeroesDao().updateHeroe(heroe)
+                heroesDatabase.getHeroesDao().updateHeroe(hero)
             }
                     .subscribeOn(Schedulers.io())
                     .subscribe()
         }
+
 }

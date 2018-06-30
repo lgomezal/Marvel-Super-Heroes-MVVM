@@ -1,6 +1,8 @@
 package com.costular.marvelheroes.presentation.heroeslist
 
 import android.arch.lifecycle.Observer
+import android.arch.lifecycle.ViewModelProvider
+import android.arch.lifecycle.ViewModelProviders
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.DefaultItemAnimator
@@ -13,17 +15,17 @@ import com.costular.marvelheroes.di.components.DaggerGetMarvelHeroesListComponen
 import com.costular.marvelheroes.di.modules.GetMarvelHeroesListModule
 import com.costular.marvelheroes.domain.model.MarvelHeroEntity
 import com.costular.marvelheroes.presentation.MainApp
+import com.costular.marvelheroes.presentation.heroedetail.MarvelHeroeDetailViewModel
 import com.costular.marvelheroes.presentation.util.Navigator
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
 class HeroesListActivity : AppCompatActivity() {
 
-    @Inject
-    lateinit var navigator: Navigator
+    private var heroImage : View? = null
 
     @Inject
-    lateinit var marvelHeroesRepositoryImpl: MarvelHeroesRepositoryImpl
+    lateinit var navigator: Navigator
 
     @Inject
     lateinit var heroesListViewModel: HeroesListViewModel
@@ -63,11 +65,10 @@ class HeroesListActivity : AppCompatActivity() {
 
     private fun goToHeroDetail(hero: MarvelHeroEntity, image: View) {
         navigator.goToHeroDetail(this, hero, image)
-
     }
 
     fun updateHero(hero: MarvelHeroEntity) {
-        marvelHeroesRepositoryImpl.updateHeroeFromView(hero)
+        heroesListViewModel.updateHero(hero)
     }
 
     private fun bindEvents() {
@@ -90,6 +91,15 @@ class HeroesListActivity : AppCompatActivity() {
 
     private fun showHeroesList(heroes: List<MarvelHeroEntity>) {
         adapter.swapData(heroes)
+    }
+
+    private fun updateHeroDetail(hero: MarvelHeroEntity) {
+        adapter.swapDataDetail(hero)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        heroesListViewModel.loadMarvelHeroes()
     }
 
 }

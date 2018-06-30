@@ -27,8 +27,8 @@ abstract class HeroesDao {
     }
 
     @Transaction
-    open fun updateOneHeroe(heroe: MarvelHeroEntity) {
-        updateHeroe(heroe)
+    open fun updateOneHeroe(hero: MarvelHeroEntity) {
+        updateHeroe(hero)
     }
 
 }

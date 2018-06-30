@@ -86,6 +86,12 @@
             style="@style/StartReview"
             android:background="@drawable/star_grey" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/saveLabel"
+            android:text="To save review click in start"/>
+
     </LinearLayout>
 
     <EditText

@@ -3,8 +3,10 @@ package com.costular.marvelheroes.di.modules
 import android.app.Application
 import android.content.Context
 import com.costular.marvelheroes.data.db.HeroesDatabase
+import com.costular.marvelheroes.data.repository.MarvelHeroesRepositoryImpl
 import com.costular.marvelheroes.data.repository.datasource.LocalDataSource
 import com.costular.marvelheroes.presentation.MainApp
+import com.costular.marvelheroes.presentation.heroedetail.MarvelHeroeDetailViewModel
 import com.costular.marvelheroes.presentation.util.Navigator
 import dagger.Module
 import dagger.Provides
