@@ -9,13 +9,13 @@ Marvel Heroes es una app para Android que lista algunos de los súperheroes de M
 ## Características ✨
 
 - Kotlin
-- MVP Clean (simplificado)
+- MVVM Clean (simplificado)
 - Dagger2
 - RxJava2
 
 ## Notas 📝
 
-- Utiliza una arquitectura MVP Clean (simplificada). Se ha simplicado dicha arquitectura con motivo de demostrar el uso de una arquitectura limpia con batería de tests sin perder demasiado tiempo teniendo en cuenta que es una app demo.
+- Utiliza una arquitectura MVVM Clean (simplificada). Se ha simplicado dicha arquitectura con motivo de demostrar el uso de una arquitectura limpia con batería de tests sin perder demasiado tiempo teniendo en cuenta que es una app demo.
 
 - Se ha utilizado ActionBar en lugar de implementar Toolbar con el objetivo de ahorrar tiempo.
 
@@ -25,6 +25,10 @@ Marvel Heroes es una app para Android que lista algunos de los súperheroes de M
 
 - Se ha utilizado [Android KTX](https://github.com/android/android-ktx) para añadir ciertas extension functions muy interesantes y útiles para el desarrollo. Algunas como `Context.toast()` no están en el repositorio de Maven en el momento que se desarrolla esta app; aunque sí que lo está en el repositorio de GitHub.
 
-- Con más tiempo me hubiera gustado implementar [Room](https://developer.android.com/topic/libraries/architecture/room.html) o cualquier otro DAO/ORM para mostrar un ejemplo claro de Repository.
+- Se ha implementado [Room](https://developer.android.com/topic/libraries/architecture/room.html) para mostrar un ejemplo claro de Repository.
+
+- Se ha añadido una opción de marcar heroes como favoritos.
+
+- Se ha añadido la posibilidad de añadir una pequeña review de los heroes
 
 - Podría y debería haber más tests
