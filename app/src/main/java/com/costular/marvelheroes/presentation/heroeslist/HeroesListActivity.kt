@@ -52,7 +52,6 @@ class HeroesListActivity : AppCompatActivity() {
 
     private fun setUpViewModel() {
         bindEvents()
-        heroesListViewModel.loadMarvelHeroes()
     }
 
     private fun setUpRecycler() {
@@ -91,10 +90,6 @@ class HeroesListActivity : AppCompatActivity() {
 
     private fun showHeroesList(heroes: List<MarvelHeroEntity>) {
         adapter.swapData(heroes)
-    }
-
-    private fun updateHeroDetail(hero: MarvelHeroEntity) {
-        adapter.swapDataDetail(hero)
     }
 
     override fun onResume() {

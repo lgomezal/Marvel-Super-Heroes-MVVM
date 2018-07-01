@@ -54,12 +54,6 @@ class HeroesListAdapter(val clickListener: Click, val clickListenerButton: Click
         notifyDataSetChanged()
     }
 
-    fun swapDataDetail(data: MarvelHeroEntity) {
-        val index = this.data.indexOf(data)
-        this.data.set(index, data)
-        notifyDataSetChanged()
-    }
-
     inner class HeroesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(item: MarvelHeroEntity) = with(itemView) {
 
@@ -86,6 +80,8 @@ class HeroesListAdapter(val clickListener: Click, val clickListenerButton: Click
                 // Change backgroung star button if isFavourite is activate.
                 if (item.isFavourite) {
                     favouriteStar.setBackgroundResource(R.drawable.star_yellow)
+                } else {
+                    favouriteStar.setBackgroundResource(R.drawable.star_grey)
                 }
 
                 heroImage.setOnClickListener {
